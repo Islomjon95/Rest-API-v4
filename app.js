@@ -4,6 +4,7 @@ const bodyParser = require("body-parser")
 const mongoose = require("mongoose")
 const port = process.env.PORT || 3000;
 const rMovies = require("./routers/movie")
+const rDirector = require("./routers/director")
 
 
 
@@ -25,6 +26,7 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 
 app.use(rMovies)
+app.use(rDirector)
 
 
 

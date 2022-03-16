@@ -51,6 +51,7 @@ router.get("/api/movies/:movie_id" , (req, res)=>{
             console.log("id da xatolik bor");
         }
         else{
+            console.log("malumot topildi")
             res.json(data)
         }
     })
@@ -63,8 +64,9 @@ router.put("/api/movies/:movie_id" , (req, res)=>{
     })
 })
 
+
 router.delete("/api/movies/:movie_id" , (req, res)=>{
-    cinema.findOneAndRemove(req.params.movie_id , (err , data)=>{
+    cinema.findByIdAndDelete(req.params.movie_id , (err , data)=>{
         if(err){
             console.log("xatolik bor");
         }
@@ -76,7 +78,7 @@ router.delete("/api/movies/:movie_id" , (req, res)=>{
 
 
 router.get("/api/movies/top10/cinema" , (req, res)=>{
-    const promise = cinema.find({}).sort({imdb_score: -1}).limit(10)
+    const promise = cinema.find({}).sort({year: -1}).limit(10)
       promise.then(data=>{
         res.json(data)
     }).catch(err=>{
