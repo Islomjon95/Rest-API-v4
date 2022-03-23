@@ -5,6 +5,8 @@ const mongoose = require("mongoose")
 const port = process.env.PORT || 3000;
 const rMovies = require("./routers/movie")
 const rDirector = require("./routers/director")
+const rUser = require("./routers/user")
+const secretKey = require("./config");
 
 
 
@@ -20,13 +22,15 @@ db.on("error" , (error)=>{
     console.log(error);
 })
 
-
+app.set("api_secret_key" , secretKey.api_secret_key)
 
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 
+app.use(rUser)
 app.use(rMovies)
 app.use(rDirector)
+
 
 
 
