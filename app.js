@@ -6,7 +6,8 @@ const port = process.env.PORT || 3000;
 const rMovies = require("./routers/movie")
 const rDirector = require("./routers/director")
 const rUser = require("./routers/user")
-const secretKey = require("./config");
+const secretKey = require("./config")
+const midware = require("./middleware/jwtmidware")
 
 
 
@@ -28,6 +29,7 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 
 app.use(rUser)
+app.use(midware)
 app.use(rMovies)
 app.use(rDirector)
 
