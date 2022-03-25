@@ -4,7 +4,8 @@
   "description": "| Route | HTTP Verb\t | POST body\t | Description\t |\r | --- | --- | --- | --- |\r | /api/movies | `GET` | Empty | List all movies. |\r | /api/movies | `POST` | {'title':'foo', 'category':'bar', 'country':'Uzbekistan', year:1990, director:\"id\", imdb_score: 9.7 } | Create a new movie. |\r | /api/movies/:movie_id | `GET` | Empty | Get a movie. |\r | /api/movies/:movie_id | `PUT` | {'name':'foo', 'surname':'bar'} | Update a movie with new info. |\r | /api/movies/:movie_id | `DELETE` | Empty | Delete a movie. |\r | /api/movies/top10 | `GET` | Empty | Get the top 10 movies. |\r | /api/movies/between/:start_year/:end_year | `GET` | Empty | Movies between two dates. |",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon start"
+    "start": "nodemon start",
+    "test" : "mocha --exit --timeout=5000"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,8 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.2",
+    "chai": "^4.3.6",
+    "chai-http": "^4.3.0",
     "express": "^4.17.3",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.2.5"
